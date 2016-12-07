@@ -28,9 +28,14 @@ public class Cover {
         this.context = context;
     }
 
+    @Nullable
+    public static Cover getInstance() {
+        return cover;
+    }
+
     public static Cover with(Context context) {
         if (context == null) {
-            throw new NullPointerException("");
+            throw new NullPointerException("Context must not be null.");
         }
         cover = new Cover(context);
         return cover;
@@ -74,6 +79,10 @@ public class Cover {
 
     public void dismiss() {
         this.dismiss(DEFAULT_DURATION_DISMISS);
+    }
+
+    public View getCoverView() {
+        return view;
     }
 
     public interface OnCoverClickListener {
